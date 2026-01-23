@@ -3,6 +3,8 @@ from sqlalchemy import Column, String, Text, DateTime, ForeignKey, Integer,Date,
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 from .database import Base
+from app.schemas import ServiceType
+from sqlalchemy import Enum as PgEnum
 
 
 class Service(Base):
@@ -23,7 +25,14 @@ class FormSubmission(Base):
     contact_number=Column(String, nullable=True)
     preferred_date = Column(Date, nullable=True)
     preferred_time = Column(Time, nullable=True)
-    service_type = Column(String, nullable=False)  # DB enforces ENUM
+    service_type = Column(
+        PgEnum(
+            ServiceType,
+            name="service_type_enum",
+            values_callable=lambda enum: [e.value for e in enum]  # <-- important
+        ),
+        nullable=True
+    )
     subject = Column(String(200))
     message = Column(Text, nullable=False)
 

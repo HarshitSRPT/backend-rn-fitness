@@ -20,9 +20,7 @@ Your verification code is:
 This code expires in 10 minutes.
 """
     )
-
-    sg = SendGridAPIClient(SENDGRID_API_KEY)
-    sg.send(message)
+    SendGridAPIClient(SENDGRID_API_KEY).send(message)
 
 
 def send_client_notification(submission):
@@ -31,13 +29,63 @@ def send_client_notification(submission):
         to_emails=CLIENT_EMAIL,
         subject="New Verified Lead",
         plain_text_content=f"""
+New request received:
+
 Name: {submission.name}
 Email: {submission.email}
-Service: {submission.service_type}
-
+Service: {submission.service_type or "Contact Form"}
+Phone: {submission.contact_number}
+Preferred Date: {submission.preferred_date}
+Preferred Time: {submission.preferred_time}
 Subject: {submission.subject}
 Message:
 {submission.message}
 """
     )
+    SendGridAPIClient(SENDGRID_API_KEY).send(message)
+
+
+def send_user_confirmation(submission):
+    # Booking confirmation
+    if submission.service_type:
+        subject = "Your Booking Request is Confirmed – RN Fitness"
+        body = f"""
+Hi {submission.name},
+
+Thank you for booking a session with RN Fitness.
+
+Here are your submitted details:
+Service: {submission.service_type}
+Preferred Date: {submission.preferred_date}
+Preferred Time: {submission.preferred_time}
+
+Our team will contact you shortly to confirm your slot and guide you with the next steps.
+
+Best regards,
+RN Fitness Team
+"""
+    # Contact form confirmation
+    else:
+        subject = "We’ve Received Your Message – RN Fitness"
+        body = f"""
+Hi {submission.name},
+
+Thank you for contacting RN Fitness.
+
+We’ve received your message with the subject:
+"{submission.subject}"
+
+Our team will review your query and get back to you shortly.
+
+Best regards,
+RN Fitness Team
+"""
+
+    message = Mail(
+        from_email=EMAIL_FROM,
+        to_emails=submission.email,
+        subject=subject,
+        plain_text_content=body
+    )
+
     SendGridAPIClient(SENDGRID_API_KEY).send(message)

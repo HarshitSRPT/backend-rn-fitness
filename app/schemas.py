@@ -11,7 +11,7 @@ class FormStartRequest(BaseModel):
     contact_number: Optional[str] = None
     preferred_date: Optional[date] = None
     preferred_time: Optional[time] = None
-    service_type: Optional[str]
+    service_type: Optional[ServiceType]
     subject: str | None = None
     message: str
     @field_validator("contact_number")
@@ -50,6 +50,8 @@ class ServiceType(str, Enum):
     group_classes = "Group Classes"
     nutrition_coaching = "Nutrition Coaching"
     online_coaching = "Online Coaching"
+    gym_training = "In-person Gym Training"
+    doctor_consultations = "Doctor Consultations"
 
 class OTPVerifyRequest(BaseModel):
     email: EmailStr
