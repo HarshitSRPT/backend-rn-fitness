@@ -2,6 +2,7 @@
 ```
 backend-rn-fitness
 ├─ app
+│  ├─ create_tables.py
 │  ├─ database.py
 │  ├─ email_service.py
 │  ├─ main.py
@@ -14,7 +15,6 @@ backend-rn-fitness
 │  ├─ schemas.py
 │  └─ __init__.py
 ├─ package-lock.json
-├─ README.md
 └─ requirements.txt
 
 ```
