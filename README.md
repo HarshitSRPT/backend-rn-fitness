@@ -10,21 +10,11 @@ backend-rn-fitness
 │  ├─ routes
 │  │  ├─ forms.py
 │  │  ├─ services.py
-│  │  ├─ __init__.py
-│  │  └─ __pycache__
-│  │     ├─ forms.cpython-314.pyc
-│  │     └─ __init__.cpython-314.pyc
+│  │  └─ __init__.py
 │  ├─ schemas.py
-│  ├─ __init__.py
-│  └─ __pycache__
-│     ├─ database.cpython-314.pyc
-│     ├─ email_service.cpython-314.pyc
-│     ├─ main.cpython-314.pyc
-│     ├─ models.cpython-314.pyc
-│     ├─ otp_service.cpython-314.pyc
-│     ├─ schemas.cpython-314.pyc
-│     └─ __init__.cpython-314.pyc
+│  └─ __init__.py
 ├─ package-lock.json
+├─ README.md
 └─ requirements.txt
 
 ```

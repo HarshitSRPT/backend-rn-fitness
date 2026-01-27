@@ -13,9 +13,13 @@ def send_otp_email(to_email: str, otp: str):
         to_emails=to_email,
         subject="Verify your request",
         plain_text_content=f"""
-Your verification code is:
+Hi Enthusiast,
+
+Your verification code for RN Fitness is:
 
 {otp}
+
+Confirm with us now and Start the journey.
 
 This code expires in 10 minutes.
 """
@@ -33,7 +37,7 @@ New request received:
 
 Name: {submission.name}
 Email: {submission.email}
-Service: {submission.service_type or "Contact Form"}
+Service: {submission.service_type.value if submission.service_type else "Contact Form"}
 Phone: {submission.contact_number}
 Preferred Date: {submission.preferred_date}
 Preferred Time: {submission.preferred_time}
@@ -55,7 +59,7 @@ Hi {submission.name},
 Thank you for booking a session with RN Fitness.
 
 Here are your submitted details:
-Service: {submission.service_type}
+Service: {submission.service_type.value}
 Preferred Date: {submission.preferred_date}
 Preferred Time: {submission.preferred_time}
 
