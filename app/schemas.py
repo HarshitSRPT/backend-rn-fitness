@@ -11,7 +11,7 @@ class FormStartRequest(BaseModel):
     contact_number: Optional[str] = None
     preferred_date: Optional[date] = None
     preferred_time: Optional[time] = None
-    service_type: Optional[ServiceType]
+    service_type: Optional["ServiceType"] = None
     subject: str | None = None
     message: str
     @field_validator("contact_number")
