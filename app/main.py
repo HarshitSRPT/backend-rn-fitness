@@ -9,10 +9,17 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://rnfitness.fit",
+        "https://www.rnfitness.fit",
+        "https://api.rnfitness.fit",
+        "https://rn-fitness.vercel.app",
+    ],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/healthz")
 def health():
