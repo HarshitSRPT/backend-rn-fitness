@@ -14,6 +14,7 @@ app.add_middleware(
         "https://www.rnfitness.fit",
         "https://api.rnfitness.fit",
         "https://rn-fitness.vercel.app",
+        "http://localhost:5173"
     ],
     allow_credentials=True,
     allow_methods=["*"],
