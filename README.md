@@ -14,7 +14,6 @@ backend-rn-fitness
 │  │  └─ __init__.py
 │  ├─ schemas.py
 │  └─ __init__.py
-├─ package-lock.json
 └─ requirements.txt
 
 ```
